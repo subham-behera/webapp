@@ -1,0 +1,36 @@
+[
+  {
+    "id": 1,
+    "name": "Lionel Messi",
+    "position": "Forward",
+    "club": "Paris Saint-Germain",
+    "nationality": "Argentina"
+  },
+  {
+    "id": 2,
+    "name": "Cristiano Ronaldo",
+    "position": "Forward",
+    "club": "Al Nassr",
+    "nationality": "Portugal"
+  },
+  {
+    "id": 3,
+    "name": "Neymar Jr",
+    "position": "Forward",
+    "club": "Paris Saint-Germain",
+    "nationality": "Brazil"
+  },
+  {
+    "id": 4,
+    "name": "Erling Haaland",
+    "position": "Striker",
+    "club": "Manchester City",
+    "nationality": "Norway"
+  },
+  {
+    "name": "Toni Kroos",
+    "position": "Center Mid",
+    "club": "Real Madrid",
+    "nationality": "Germany"
+  }
+]
