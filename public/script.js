@@ -3,13 +3,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const goButton = document.getElementById('go-button');
     const playersContainer = document.getElementById('players');
 
-    // Function to fetch player details
-    const fetchPlayers = async () => {
+    // Function to fetch and display player details based on search input
+    const filterPlayers = async () => {
+        const searchTerm = searchInput.value.toLowerCase().trim();
+        if (!searchTerm) {
+            alert('Please enter a player name to search.');
+            return;
+        }
+
         try {
-            const response = await fetch('http://20.230.64.59:3000/players'); // Replace with actual API URL
+            const response = await fetch('http://localhost:3000/players'); // Replace with actual API URL
             if (!response.ok) throw new Error('Network response was not ok');
             const players = await response.json();
-            displayPlayers(players);
+            const filteredPlayers = players.filter(player =>
+                player.name.toLowerCase().includes(searchTerm)
+            );
+
+            if (filteredPlayers.length === 0) {
+                playersContainer.innerHTML = '<p>No players found.</p>';
+            } else {
+                displayPlayers(filteredPlayers);
+            }
         } catch (error) {
             console.error('Error fetching players:', error);
         }
@@ -31,25 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // Function to filter players based on search input
-    const filterPlayers = async () => {
-        const searchTerm = searchInput.value.toLowerCase();
-        try {
-            const response = await fetch('http://20.230.64.59:3000/players'); // Replace with actual API URL
-            if (!response.ok) throw new Error('Network response was not ok');
-            const players = await response.json();
-            const filteredPlayers = players.filter(player =>
-                player.name.toLowerCase().includes(searchTerm)
-            );
-            displayPlayers(filteredPlayers);
-        } catch (error) {
-            console.error('Error filtering players:', error);
-        }
-    };
-
     // Event listener for "Go" button
     goButton.addEventListener('click', filterPlayers);
-
-    // Initial fetch of player details
-    fetchPlayers();
 });
