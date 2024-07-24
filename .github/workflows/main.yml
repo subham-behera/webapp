@@ -30,4 +30,4 @@ jobs:
       with:
         context: .
         push: true
-        tags: your-dockerhub-username/your-repository-name:latest
+        tags: devsubham09/webapp:latest
